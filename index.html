@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>Ajay · Full Stack Architect</title>
+<title>Ajay · Full Stack Architect | Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -35,7 +35,61 @@ body {
   color: var(--text-main);
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
-  cursor: default;
+  cursor: none;
+}
+
+/* ========== UNIQUE TECH CURSOR ========== */
+.cursor {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 0.12s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+  box-shadow: 0 0 18px rgba(45, 212, 191, 0.75);
+}
+
+.cursor-follower {
+  position: fixed;
+  width: 45px;
+  height: 45px;
+  border: 2px solid rgba(192, 132, 252, 0.85);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 0.12s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.15s ease, background 0.15s ease, box-shadow 0.2s ease;
+  backdrop-filter: blur(8px);
+  background: rgba(12, 12, 28, 0.45);
+  box-shadow: 0 0 24px rgba(56, 189, 248, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+
+/* Click animation */
+@keyframes cursorPop {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(3); background: var(--accent); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.cursor-ripple {
+  position: fixed;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgba(45, 212, 191, 0.9);
+  pointer-events: none;
+  z-index: 9997;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 0.9;
+  animation: ripplePop 0.55s ease-out forwards;
+}
+
+@keyframes ripplePop {
+  to { transform: translate(-50%, -50%) scale(2.8); opacity: 0; }
 }
 
 /* Animated gradient background */
@@ -95,9 +149,28 @@ nav {
 }
 
 .logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-family: 'Space Grotesk', sans-serif;
   font-size: 1.8rem;
   font-weight: 700;
+  text-decoration: none;
+}
+
+.logo-img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.05);
+}
+
+.logo-text {
   background: var(--grad-hero);
   -webkit-background-clip: text;
   background-clip: text;
@@ -122,6 +195,7 @@ nav {
   transition: all 0.3s;
   position: relative;
   padding: 0.5rem 0;
+  cursor: none;
 }
 
 .nav-links a:after {
@@ -213,17 +287,63 @@ section {
   color: transparent;
 }
 
-/* HERO */
+/* HERO with side image */
 .hero {
   min-height: 100vh;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 8rem 5rem 5rem;
+  gap: 4rem;
 }
 
 .hero-content {
-  max-width: 750px;
+  max-width: 650px;
   z-index: 5;
+  flex: 1;
+}
+
+.hero-side-image {
+  flex: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  animation: floatImage 6s ease-in-out infinite;
+}
+
+@keyframes floatImage {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.profile-avatar {
+  width: 320px;
+  height: 320px;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(192, 132, 252, 0.4);
+  transition: all 0.5s ease;
+  animation: morphShape 8s ease-in-out infinite;
+}
+
+@keyframes morphShape {
+  0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+  25% { border-radius: 58% 42% 75% 25% / 42% 55% 45% 58%; }
+  50% { border-radius: 45% 55% 50% 50% / 55% 40% 60% 45%; }
+  75% { border-radius: 35% 65% 55% 45% / 35% 30% 70% 65%; }
+}
+
+.profile-avatar img {
+  width: 90%;
+  height: 90%;
+  object-fit: cover;
+  border-radius: inherit;
+  filter: brightness(1.05) contrast(1.1);
 }
 
 .glitch-text {
@@ -247,12 +367,6 @@ section {
 @keyframes shimmer {
   0% { background-position: 0% center; }
   100% { background-position: 200% center; }
-}
-
-.glow-badge {
-  position: relative;
-  display: inline-block;
-  margin-top: 1rem;
 }
 
 .hero-description {
@@ -285,6 +399,7 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  cursor: none;
 }
 
 .btn-primary:hover {
@@ -303,6 +418,7 @@ section {
   color: var(--text-main);
   transition: all 0.3s;
   backdrop-filter: blur(8px);
+  cursor: none;
 }
 
 .btn-outline:hover {
@@ -311,24 +427,153 @@ section {
   transform: translateY(-3px);
 }
 
-/* floating cards */
-.floating-card {
-  position: absolute;
-  right: 8%;
-  top: 25%;
-  animation: levitate 6s ease-in-out infinite;
-  background: rgba(20, 25, 45, 0.6);
-  backdrop-filter: blur(12px);
-  border-radius: 32px;
-  border: 1px solid rgba(192, 132, 252, 0.3);
-  padding: 1.5rem;
-  width: 220px;
-  text-align: center;
+/* ========== PROJECTS SECTION ========== */
+.projects-container {
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
-@keyframes levitate {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.project-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-light);
+  border-radius: 28px;
+  padding: 1.8rem;
+  transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  position: relative;
+  overflow: hidden;
+  cursor: none;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(192, 132, 252, 0.1), transparent);
+  transition: left 0.6s ease;
+  z-index: 0;
+}
+
+.project-card:hover::before {
+  left: 100%;
+}
+
+.project-card:hover {
+  transform: translateY(-12px);
+  border-color: var(--primary);
+  box-shadow: var(--glow-effect);
+}
+
+.project-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+  transition: transform 0.3s;
+}
+
+.project-icon-img {
+  width: 3rem;
+  height: 3rem;
+  object-fit: contain;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+.project-card:hover .project-icon,
+.project-card:hover .project-icon-img {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.project-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  background: linear-gradient(135deg, #fff, var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.project-description {
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+  font-size: 0.9rem;
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.tech-tag {
+  background: rgba(192, 132, 252, 0.15);
+  border: 1px solid rgba(192, 132, 252, 0.3);
+  border-radius: 50px;
+  padding: 0.25rem 0.8rem;
+  font-size: 0.7rem;
+  font-family: 'Fira Code', monospace;
+  color: var(--accent);
+}
+
+.project-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-light);
+  border-radius: 40px;
+  padding: 0.5rem 1.2rem;
+  text-decoration: none;
+  color: var(--text-main);
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.project-link:hover {
+  border-color: var(--primary);
+  background: rgba(192, 132, 252, 0.15);
+  transform: translateY(-3px);
+}
+
+.feature-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(45, 212, 191, 0.2);
+  border: 1px solid var(--accent);
+  border-radius: 50px;
+  padding: 0.2rem 0.8rem;
+  font-size: 0.6rem;
+  font-family: 'Fira Code', monospace;
+  color: var(--accent);
+}
+
+/* Education items */
+.education-item:hover {
+  transform: translateY(-8px);
+  border-color: var(--primary);
+  box-shadow: var(--glow-effect);
 }
 
 /* Skills grid */
@@ -377,6 +622,7 @@ section {
   transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
   position: relative;
   overflow: hidden;
+  cursor: none;
 }
 
 .skill-card:hover {
@@ -421,6 +667,7 @@ section {
   transition: all 0.4s;
   position: relative;
   overflow: hidden;
+  cursor: none;
 }
 
 .interest-card:hover {
@@ -461,6 +708,7 @@ section {
   color: var(--text-main);
   font-weight: 500;
   margin: 2rem 0;
+  cursor: none;
 }
 
 .contact-email:hover {
@@ -489,6 +737,7 @@ section {
   color: var(--text-muted);
   transition: all 0.2s;
   font-size: 0.85rem;
+  cursor: none;
 }
 
 .social-btn:hover {
@@ -507,38 +756,87 @@ footer {
   color: var(--text-muted);
 }
 
-/* scroll reveal */
+/* scroll reveal - enhanced */
 .reveal {
   opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transform: translateY(50px) scale(0.95);
+  transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
 }
 
 .revealed {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
+}
+
+/* Scroll progress bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: var(--grad-hero);
+  z-index: 101;
+  transition: width 0.1s ease-out;
+  box-shadow: 0 0 10px var(--primary);
+}
+
+@media (max-width: 1100px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-content {
+    text-align: center;
+  }
+  .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .btn-group {
+    justify-content: center;
+  }
+  .hero-side-image {
+    order: -1;
+  }
+  .profile-avatar {
+    width: 250px;
+    height: 250px;
+  }
 }
 
 @media (max-width: 900px) {
   nav { padding: 1rem 2rem; }
   section { padding: 5rem 1.5rem; }
   .hero { padding: 7rem 1.5rem 3rem; }
-  .floating-card { display: none; }
   .nav-links { gap: 1rem; }
   footer { flex-direction: column; gap: 1rem; text-align: center; }
+  .logo-text { font-size: 1.4rem; }
+  .logo-img { width: 35px; height: 35px; }
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
 </head>
 <body>
 <div class="bg-aurora"></div>
 <div class="particles" id="particlesContainer"></div>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follower" id="cursorFollower"></div>
+<div class="scroll-progress" id="scrollProgress"></div>
 
 <nav id="navbar">
-  <div class="logo">✦ AJAY</div>
+  <a href="#hero" class="logo" style="text-decoration: none;">
+    <img src="./Logo.png" alt="Ajay Logo" class="logo-img" id="logoImage" onerror="this.style.display='none'; document.querySelector('.logo-text').style.display='block'">
+    <span class="logo-text">✦ AJAY</span>
+  </a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
     <li><a href="#skills">Skills</a></li>
-    <li><a href="#interests">Vibes</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#interests">Interests</a></li>
     <li><a href="#contact">Connect</a></li>
   </ul>
 </nav>
@@ -556,18 +854,21 @@ footer {
       I turn ideas into resilient web applications, with pixel precision and backend logic. Currently mastering the entire dev cosmos — from databases to dynamic UIs.
     </div>
     <div class="btn-group">
-      <a href="#skills" class="btn-primary">✦ Explore Arsenal ✦</a>
+      <a href="#projects" class="btn-primary">✦ View My Work ✦</a>
       <a href="#contact" class="btn-outline">📩 Drop a message</a>
     </div>
   </div>
+  <!-- <div class="hero-side-image">
+    <div class="profile-avatar">
+      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Ajay Profile">
+    </div>
+  </div> -->
 </section>
 
-<!-- Infinite Scroll marquee (animated tech stack) -->
+<!-- Infinite Scroll marquee -->
 <div style="overflow: hidden; white-space: nowrap; background: rgba(192,132,252,0.05); border-block: 1px solid rgba(139,92,246,0.2); padding: 0.8rem 0; position: relative; z-index: 5;">
-  <div id="techMarquee" style="display: inline-block; animation: marqueeScroll 25s linear infinite; font-family: monospace;">
-  </div>
-  <div id="techMarquee2" style="display: inline-block; animation: marqueeScroll 25s linear infinite;">
-  </div>
+  <div id="techMarquee" style="display: inline-block; animation: marqueeScroll 25s linear infinite; font-family: monospace;"></div>
+  <div id="techMarquee2" style="display: inline-block; animation: marqueeScroll 25s linear infinite;"></div>
 </div>
 <style>
   @keyframes marqueeScroll {
@@ -598,6 +899,36 @@ footer {
   </div>
 </section>
 
+<section id="education">
+  <div class="skills-container">
+    <div class="section-label reveal">✦ education</div>
+    <div class="section-title reveal">Academic <span style="color:var(--secondary);">Journey</span></div>
+    <div class="education-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;">
+      <div class="education-item reveal" style="background: var(--bg-card); backdrop-filter: blur(12px); border: 1px solid var(--border-light); border-radius: 28px; padding: 2rem; transition: all 0.4s;">
+        <div style="font-size: 2rem; margin-bottom: 1rem;">📚</div>
+        <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; background: linear-gradient(135deg, #fff, var(--secondary)); -webkit-background-clip: text; background-clip: text; color: transparent;">10th Class</h3>
+        <p style="color: var(--text-muted); margin-bottom: 0.5rem;">SSB Municipal High School</p>
+        <p style="color: var(--accent); font-weight: 600;">Percentage: 77%</p>
+      </div>
+      <div class="education-item reveal" style="background: var(--bg-card); backdrop-filter: blur(12px); border: 1px solid var(--border-light); border-radius: 28px; padding: 2rem; transition: all 0.4s;">
+        <div style="font-size: 2rem; margin-bottom: 1rem;">🎓</div>
+        <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; background: linear-gradient(135deg, #fff, var(--secondary)); -webkit-background-clip: text; background-clip: text; color: transparent;">Intermediate Education (MPC)</h3>
+        <p style="color: var(--text-muted); margin-bottom: 0.5rem;">APSWRJC (DR.B.R.Ambedkar Gurukul Boys, Ramakuppam)</p>
+        <p style="color: var(--accent); font-weight: 600;">Percentage: 83%</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PROJECTS SECTION ========== -->
+<section id="projects">
+  <div class="projects-container">
+    <div class="section-label reveal">✦ my creations</div>
+    <div class="section-title reveal">Building <span style="color:var(--secondary);">Solutions</span><br>That Matter</div>
+    <div class="projects-grid" id="projectsGrid"></div>
+  </div>
+</section>
+
 <section id="skills">
   <div class="skills-container">
     <div class="section-label reveal">⚙️ tech arsenal</div>
@@ -609,34 +940,79 @@ footer {
 <section id="interests">
   <div style="text-align: center; max-width: 700px; margin: 0 auto;">
     <div class="section-label reveal" style="justify-content: center;">✦ beyond keyboard</div>
-    <div class="section-title reveal">What fuels <span style="color: var(--accent);">the fire</span></div>
+    <div class="section-title reveal">What inspires <span style="color: var(--accent);">me</span></div>
   </div>
   <div class="interest-grid" id="interestsGrid"></div>
 </section>
 
 <section id="contact">
   <div class="contact-center">
-    <div class="section-label reveal" style="justify-content: center;">✉️ let’s talk</div>
+    <div class="section-label reveal" style="justify-content: center;">✉️ let's talk</div>
     <div class="section-title reveal">Collaborate & <span style="color: var(--secondary);">create magic</span></div>
     <p class="reveal" style="color: var(--text-muted); margin-bottom: 1.5rem;">Available for freelance, open source contributions, or just a tech chat.</p>
     <a href="mailto:ajaythadi01@gmail.com" class="contact-email reveal"><span style="font-size: 1.5rem;">📧</span> ajaythadi01@gmail.com</a>
     <div class="social-links reveal">
-      <a href="#" class="social-btn"><img src="https://cdn.simpleicons.org/github/white" width="16" style="filter: invert(1);"> GitHub</a>
-      <a href="#" class="social-btn"><img src="https://cdn.simpleicons.org/linkedin/0a66c2" width="16"> LinkedIn</a>
-      <a href="#" class="social-btn"><img src="https://cdn.simpleicons.org/x/white" width="16" style="filter: invert(1);"> X (Twitter)</a>
-      <a href="#" class="social-btn"><img src="https://cdn.simpleicons.org/instagram/e1306c" width="16"> Instagram</a>
+      <a href="https://github.com/Ajay-11012" class="social-btn"><img src="https://cdn.simpleicons.org/github/white" width="16" style="filter: invert(1);"> GitHub</a>
+      <a href="https://www.linkedin.com/in/ajay-thadi/?isSelfProfile=false" class="social-btn"><img src="https://img.freepik.com/premium-vector/linkedin-logo-icon_1273375-1174.jpg?semt=ais_hybrid&w=740&q=80" target="_blank" width="16"> LinkedIn</a>
+      <!-- <a href="#" class="social-btn"><img src="https://cdn.simpleicons.org/x/white" width="16" style="filter: invert(1);"> X (Twitter)</a>
+      <a href="#" class="social-btn"><img src="https://cdn.simpleicons.org/instagram/e1306c" width="16"> Instagram</a> -->
     </div>
   </div>
 </section>
 
 <footer>
   <span>© 2025 Ajay — Full Stack Visionary</span>
-  <span>∞ Built with  •  Reactivity • Stellar Animations</span>
+  <span>∞ Built with • Reactivity • Stellar Animations</span>
   <span>Trainee @ ACT, Hyderabad</span>
 </footer>
 
 <script>
-  // Particle system - more animations
+  // ========== UNIQUE TECH CURSOR with click animation ==========
+  const cursor = document.getElementById('cursor');
+  const cursorFollower = document.getElementById('cursorFollower');
+  let mouseX = 0, mouseY = 0;
+  let followerX = 0, followerY = 0;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    cursor.style.left = mouseX + 'px';
+    cursor.style.top = mouseY + 'px';
+    cursorFollower.style.left = mouseX + 'px';
+    cursorFollower.style.top = mouseY + 'px';
+  });
+
+  // Click animation
+  document.addEventListener('click', (e) => {
+    cursor.style.transform = 'translate(-50%, -50%) scale(2.5)';
+    cursorFollower.style.transform = 'translate(-50%, -50%) scale(1.2)';
+    cursorFollower.style.borderColor = 'var(--accent)';
+    cursorFollower.style.boxShadow = '0 0 35px rgba(45,212,191,0.35)';
+
+    const ripple = document.createElement('span');
+    ripple.className = 'cursor-ripple';
+    ripple.style.left = `${e.clientX}px`;
+    ripple.style.top = `${e.clientY}px`;
+    document.body.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 550);
+
+    setTimeout(() => {
+      cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+      cursorFollower.style.transform = 'translate(-50%, -50%) scale(1)';
+      cursorFollower.style.borderColor = 'var(--primary)';
+      cursorFollower.style.boxShadow = '0 0 20px rgba(192, 132, 252, 0.3)';
+    }, 200);
+  });
+
+  // Scroll progress bar
+  window.addEventListener('scroll', () => {
+    const winScroll = document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    document.getElementById('scrollProgress').style.width = scrolled + '%';
+  });
+
+  // Particle system
   const particlesContainer = document.getElementById('particlesContainer');
   for (let i = 0; i < 75; i++) {
     const p = document.createElement('div');
@@ -651,29 +1027,88 @@ footer {
     particlesContainer.appendChild(p);
   }
 
-  // Enhanced SKILLS data (official images, no percentages, more items)
+  // ========== PROJECTS DATA ==========
+  const projectsData = [
+    {
+      icon: "./Logo.png",
+      title: "Modern Portfolio",
+      description: "A stunning, animated personal portfolio website showcasing my skills, projects, and journey as a full-stack developer with interactive UI/UX.",
+      tech: ["HTML5", "CSS3", "JavaScript", "GSAP"],
+      link: "https://ajay-11012.github.io/Portfolio1/",
+      feature: "Live Demo"
+    },
+    {
+      icon: "https://play-lh.googleusercontent.com/Riua22wVNUES6uFtQLygubL2fXJbcJj74gqJp-uN-G-_h1o9HRdduNrUtTij2iPuKSI",
+      title: "Smart Calculator",
+      description: "A feature-rich calculator application with clean UI, responsive design, and real-time calculations. Perfect for everyday mathematical operations.",
+      tech: ["HTML5", "CSS3", "JavaScript", "Responsive"],
+      link: "https://simple-calculataor.netlify.app/",
+      feature: "Live Demo"
+    },
+    {
+      icon: "https://i.postimg.cc/NjDChGWh/Whats-App-Image-2026-03-23-at-12-33-09.jpg",
+      title: "Paws Rescue Program",
+      description: "An online platform where users can report injured animals. Reports are sent directly to NGOs for immediate rescue and rehabilitation actions.",
+      tech: ["HTML5", "CSS3", "JavaScript"],
+      link: "https://ajay-11012.github.io/Paws-Rescue-and-rehabilitation-Program/",
+      feature: "Impact Project"
+    },
+    {
+      icon: "https://img.freepik.com/free-vector/overlapping-outline-hearts_78370-2913.jpg?semt=ais_hybrid&w=740&q=80",
+      title: "Flames Game",
+      description: "A fun and interactive Flames game to check compatibility between names, featuring smooth animations and responsive design.",
+      tech: ["HTML5", "CSS3", "JavaScript"],
+      link: "https://play-flames-game.netlify.app/",
+      feature: "Live Demo"
+    }
+  ];
+
+  const projectsGrid = document.getElementById('projectsGrid');
+  projectsData.forEach((project, idx) => {
+    const card = document.createElement('div');
+    card.className = 'project-card reveal';
+    card.style.transitionDelay = `${idx * 0.1}s`;
+    card.innerHTML = `
+      <div class="feature-badge">${project.feature}</div>
+      <div class="project-icon">
+        ${project.icon.startsWith('http') || project.icon.startsWith('./') || project.icon.startsWith('/') ? 
+          `<img src="${project.icon}" alt="${project.title} icon" class="project-icon-img">` : 
+          project.icon}
+      </div>
+      <div class="project-title">${project.title}</div>
+      <div class="project-description">${project.description}</div>
+      <div class="project-tech">
+        ${project.tech.map(t => `<span class="tech-tag">${t}</span>`).join('')}
+      </div>
+      <div class="project-links">
+        <a href="${project.link}" target="_blank" class="project-link">🔗 Live Project →</a>
+      </div>
+    `;
+    projectsGrid.appendChild(card);
+  });
+
+  // SKILLS DATA
   const skillsData = {
     "Frontend Alchemy": [
       { name: "HTML5", icon: "https://cdn.simpleicons.org/html5/E34F26", sub: "Semantic web" },
       { name: "CSS3", icon: "https://cdn-icons-png.flaticon.com/512/16183/16183567.png", sub: "Flex/Grid/Animations" },
-      { name: "JavaScript (ES6+)", icon: "https://cdn.simpleicons.org/javascript/F7DF1E", sub: "Modern JS" }
+      { name: "JavaScript", icon: "https://cdn.simpleicons.org/javascript/F7DF1E", sub: "Modern JS" }
     ],
     "Backend & Databases": [
       { name: "Python", icon: "https://cdn.simpleicons.org/python/3776AB", sub: "Flask, scripting" },
-
-      { name: "MySQL", icon: "https://cdn.simpleicons.org/mysql/4479A1", sub: "Relational DB" }
-
+      { name: "MySQL", icon: "https://cdn.simpleicons.org/mysql/4479A1", sub: "Relational DB" },
+      { name: "Flask", icon: "https://cdn.simpleicons.org/flask/ffffff", sub: "REST APIs" }
     ],
     "Dev Tools & Cloud": [
       { name: "Git & GitHub", icon: "https://cdn.simpleicons.org/git/F05032", sub: "Version Control" },
       { name: "VS Code", icon: "https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxj7kCzMIlSC20SNjaJf9GmESvWFqgy6FNrwzWSIu2lzePyWSz8zg09RAX43OFexidzEE3_7l3auaKk4w9ktJdqg-&format=source", sub: "Primary IDE" }
     ],
     "Soft Skills & Mindset": [
-      { name: "Problem Solving", icon: "🧠", sub: "Creative" },
-      { name: "Team Collaboration", icon: "🤝", sub: "Agile" },
-      { name: "Critical Thinking", icon: "🎯", sub: "Analytical" },
-      { name: "Time Management", icon: "⏳", sub: "Efficient" },
-      { name: "Adaptability", icon: "🌀", sub: "Fast learner" }
+      { name: "Problem Solving", icon: "🧠", sub: "Creative & Analytical" },
+      { name: "Team Collaboration", icon: "🤝", sub: "Agile Mindset" },
+      { name: "Critical Thinking", icon: "🎯", sub: "Strategic Planning" },
+      { name: "Time Management", icon: "⏳", sub: "Efficient Delivery" },
+      { name: "Adaptability", icon: "🌀", sub: "Fast Learner" }
     ]
   };
 
@@ -688,7 +1123,7 @@ footer {
       const card = document.createElement('div');
       card.className = 'skill-card';
       if (skill.icon && (skill.icon.startsWith('http') || skill.icon.includes('simpleicons'))) {
-        card.innerHTML = `<img class="skill-icon" src="${skill.icon}" alt="${skill.name}" loading="lazy" onerror="this.src='https://cdn.simpleicons.org/code/white'"><div><div class="skill-name">${skill.name}</div><div class="skill-sub">${skill.sub}</div></div>`;
+        card.innerHTML = `<img class="skill-icon" src="${skill.icon}" alt="${skill.name}z" loading="lazy" onerror="this.src='https://cdn.simpleicons.org/code/white'"><div><div class="skill-name">${skill.name}</div><div class="skill-sub">${skill.sub}</div></div>`;
       } else {
         card.innerHTML = `<div style="font-size: 28px;">${skill.icon}</div><div><div class="skill-name">${skill.name}</div><div class="skill-sub">${skill.sub}</div></div>`;
       }
@@ -696,14 +1131,12 @@ footer {
     });
   }
 
-  // Interest cards with fresh content (no chessboard, but animations)
+  // Interest cards
   const interestsList = [
-    { icon: "🌐", title: "Web Crafting", desc: "Building stunning interactive websites, micro-interactions, and smooth UIs. Obsessed with modern design systems." },
-    { icon: "⚙️", title: "Open Source & Tools", desc: "Writing scripts and contributing to projects that solve real-world problems. Automation and developer tooling." },
-    { icon: "♟️", title: "Chess Grandmaster Mind", desc: "Strategic planning, pattern recognition, and thinking 5 moves ahead — translates directly to elegant code." },
-    { icon: "🎨", title: "Creative Coding", desc: "Generative art, CSS experiments, and bringing digital art to life through code." },
-    { icon: "📖", title: "Tech Research", desc: "Exploring emerging stacks, reading engineering blogs, and staying ahead of the curve." },
-    { icon: "☕", title: "Coffee & Code", desc: "Late night debugging sessions and pair programming magic." }
+    { icon: "🌐", title: "I like to create webpages", desc: "Designing responsive interfaces, polished layouts, and interactive web experiences that feel seamless on every device." },
+    { icon: "💻", title: "Doing programming & solving problems", desc: "Building logical solutions, debugging issues, and refining code until it works beautifully." },
+    { icon: "♟️", title: "Playing chess to improve thinking", desc: "Using chess to sharpen critical thinking, strategy, and logic — skills I apply to every coding challenge." },
+    { icon: "�", title: "Tech Research", desc: "Exploring emerging stacks, reading engineering blogs, and staying ahead of the curve." },
   ];
   const interestsGrid = document.getElementById('interestsGrid');
   interestsList.forEach((item, idx) => {
@@ -714,9 +1147,10 @@ footer {
     interestsGrid.appendChild(card);
   });
 
-  // Infinite Tech Marquee items (official icons)
+  // Tech Marquee
   const techItems = [
-     "Python", "Git", "Flask"
+    "HTML5", "CSS3", "JavaScript", "Python", "MySQL",
+    "Git", "VS Code", "Flask",  "Responsive Design", "Problem Solving", "Team Collaboration", "Critical Thinking", "Time Management", "Adaptability"
   ];
   const marqueeDiv = document.getElementById('techMarquee');
   const marqueeDiv2 = document.getElementById('techMarquee2');
@@ -727,7 +1161,6 @@ footer {
   marqueeDiv.innerHTML = marqueeHTML + marqueeHTML;
   marqueeDiv2.innerHTML = marqueeHTML + marqueeHTML;
   
-
   // Scroll reveal observer
   const revealElements = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
@@ -757,22 +1190,32 @@ footer {
     else nav.style.background = 'rgba(10,10,26,0.75)';
   });
 
-  // particle parallax effect? subtle background move
+  // Parallax background
   document.addEventListener('mousemove', (e) => {
     const moveX = (e.clientX / window.innerWidth) * 10;
     const moveY = (e.clientY / window.innerHeight) * 10;
-    document.querySelector('.bg-aurora').style.transform = `translate(${moveX * 0.05}px, ${moveY * 0.05}px)`;
+    const aurora = document.querySelector('.bg-aurora');
+    if (aurora) {
+      aurora.style.transform = `translate(${moveX * 0.05}px, ${moveY * 0.05}px)`;
+    }
   });
   
-  // Fix missing images fallback
+  // Fix missing images
   document.querySelectorAll('.skill-icon').forEach(img => {
     img.onerror = () => { img.src = 'https://cdn.simpleicons.org/code/white'; };
   });
   
-  // extra floating glow animation to some items
-  const styleSheet = document.createElement("style");
-  styleSheet.textContent = `.skill-card:hover .skill-icon { filter: drop-shadow(0 0 6px var(--primary-glow)); transition:0.2s; } .interest-card { transition: all 0.35s cubic-bezier(0.2,0.9,0.5,1.2); }`;
-  document.head.appendChild(styleSheet);
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
 </script>
 </body>
 </html>
