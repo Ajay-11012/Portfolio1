@@ -34,8 +34,8 @@ const projectsData = [
   },
   {
     icon: "https://play-lh.googleusercontent.com/Riua22wVNUES6uFtQLygubL2fXJbcJj74gqJp-uN-G-_h1o9HRdduNrUtTij2iPuKSI",
-    title: "Smart Calculator",
-    description: "Feature-rich calculator.",
+    title: "Simple Calculator",
+    description: "A simple calculator.",
     tech: ["HTML5", "CSS3", "JavaScript"],
     link: "https://simple-calculataor.netlify.app/",
     feature: "Live Demo",
