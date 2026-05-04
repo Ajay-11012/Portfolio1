@@ -230,25 +230,71 @@ filterButtons.forEach(btn => {
     });
   });
 
-  const logoImage = document.getElementById('logoImage');
-  const logoOverlay = document.getElementById('logoOverlay');
+function applyTilt() {
 
-  const hideLogoOverlay = () => {
-    logoOverlay.classList.remove('show');
-  };
-
-  logoImage.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    logoOverlay.classList.add('show');
+  // 🔥 NORMAL CARDS
+  VanillaTilt.init(document.querySelectorAll(
+    ".project-card, .skill-card, .interest-card, .education-item, .contact-email"
+  ), {
+    max: 8,
+    speed: 400,
+    scale: 1.02,
+    glare: false
   });
 
-  document.addEventListener('click', (e) => {
-    if (logoOverlay.classList.contains('show') && !e.target.closest('.logo-overlay-card') && !e.target.closest('#logoImage')) {
-      hideLogoOverlay();
-    }
+  // 🐾 PAWS CARD (LOW TILT)
+  VanillaTilt.init(document.querySelectorAll(".paws-card"), {
+    max: 3,        // 🔥 reduced tilt
+    speed: 300,
+    scale: 1.01,
+    glare: false
   });
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') hideLogoOverlay();
-  });
+}
+
+window.addEventListener("load", () => {
+  applyTilt();
+});
+
+
+// Track mouse position
+const glow = document.querySelector(".global-cursor-glow");
+
+// Direct attach (NO DELAY)
+document.addEventListener("mousemove", (e) => {
+  glow.style.left = e.clientX + "px";
+  glow.style.top = e.clientY + "px";
+});
+
+// Hide when mouse leaves
+document.addEventListener("mouseleave", () => {
+  glow.style.opacity = "0";
+});
+
+document.addEventListener("mouseenter", () => {
+  glow.style.opacity = "1";
+});
+
+glow.style.transition = "transform 0.03s linear";
+//   const logoImage = document.getElementById('logoImage');
+//   const logoOverlay = document.getElementById('logoOverlay');
+
+//   const hideLogoOverlay = () => {
+//     logoOverlay.classList.remove('show');
+//   };
+
+//   logoImage.addEventListener('click', (e) => {
+//     e.preventDefault();
+//     e.stopPropagation();
+//     logoOverlay.classList.add('show');
+//   });
+
+//   document.addEventListener('click', (e) => {
+//     if (logoOverlay.classList.contains('show') && !e.target.closest('.logo-overlay-card') && !e.target.closest('#logoImage')) {
+//       hideLogoOverlay();
+//     }
+//   });
+
+//   document.addEventListener('keydown', (e) => {
+//     if (e.key === 'Escape') hideLogoOverlay();
+//   });

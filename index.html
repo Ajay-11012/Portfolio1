@@ -58,31 +58,27 @@
 
 
 <div class="hero-side-image">
-  <div class="tech-layout">
+ <div class="text-cluster">
 
-    <!-- TOP -->
-    <div class="top-row">
-      <span class="tech-tag-float html">HTML</span>
-      <span class="tech-tag-float css">CSS</span>
-    </div>
+  <!-- 🔥 GLOW BACKGROUND -->
+  <div class="cluster-glow"></div>
 
-    <!-- MIDDLE -->
-    <div class="middle-row">
-      <span class="tech-tag-float python">Python</span>
-
-      <div class="center-image">
-        <img src="" alt="profile">
-      </div>
-
-      <span class="tech-tag-float js">JavaScript</span>
-    </div>
-
-    <!-- BOTTOM -->
-    <div class="bottom-row">
-      <span class="tech-tag-float web">Web Developer</span>
-    </div>
-
+  <div class="row top">
+    <span class="skill html">HTML</span>
+    <span class="skill css">CSS</span>
   </div>
+
+  <div class="row middle">
+    <span class="skill python">Python</span>
+    <span class="main-title">Web Developer</span>
+    <span class="skill js">JavaScript</span>
+  </div>
+
+  <div class="row bottom">
+    <span class="skill sql">SQL</span>
+  </div>
+
+</div>
 </div>
 
 
@@ -153,37 +149,38 @@
     </div>
 
     <!-- 🔥 ADD PAWS PROJECT HERE -->
-    <div class="featured-project reveal">
+<div class="featured-project paws-card reveal">
 
-      <!-- IMAGE (TOP) -->
-      <img 
-        src="https://i.postimg.cc/NjDChGWh/Whats-App-Image-2026-03-23-at-12-33-09.jpg" 
-        class="featured-img"
-      />
+  <!-- LEFT: IMAGE -->
+  <div class="paws-left">
+    <img 
+      src="https://i.postimg.cc/NjDChGWh/Whats-App-Image-2026-03-23-at-12-33-09.jpg" 
+      class="featured-img"
+    />
+  </div>
 
-      <h2>🐾 Paws Rescue Program</h2>
+  <!-- RIGHT: CONTENT -->
+  <div class="paws-right">
+    <h2>🐾 Paws Rescue Program</h2>
 
-      <p>
-        A platform where users can report injured animals and notify NGOs instantly for rescue.
-      </p>
+    <p>
+      A platform where users can report injured animals and notify NGOs instantly for rescue.
+    </p>
 
-      <ul>
-        <li>✔ Real-world problem solving</li>
-        <li>✔ NGO notification system</li>
-        <li>✔ Responsive UI design</li>
-      </ul>
+    <ul>
+      <li>✔ Real-world problem solving</li>
+      <li>✔ NGO notification system</li>
+      <li>✔ Responsive UI design</li>
+    </ul>
 
-      <div class="btn-group">
-        <a href="https://ajay-11012.github.io/Paws-Rescue-and-rehabilitation-Program/" target="_blank" class="btn-primary">
-          🔗 Live Demo
-        </a>
-
-        <a href="https://github.com/Ajay-11012" target="_blank" class="btn-outline">
-          💻 View Code
-        </a>
-      </div>
-
+    <div class="btn-group">
+      <a href="https://ajay-11012.github.io/Paws-Rescue-and-rehabilitation-Program/" target="_blank" class="btn-primary">🔗 Live Demo</a>
+      <a href="#" class="btn-outline">💻 View Code</a>
     </div>
+  </div>
+
+</div>
+
     <div class="project-filters reveal">
   <button class="filter-btn active" data-filter="all">All</button>
   <button class="filter-btn" data-filter="web">Web</button>
@@ -257,14 +254,20 @@
   <span>Trainee @ ACT, Hyderabad</span>
 </footer>
 
+<div class="global-cursor-glow"></div>
+
 <script src="./java.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
 <script>
-VanillaTilt.init(document.querySelectorAll(".project-card"), {
-  max: 15,
+VanillaTilt.init(document.querySelectorAll(
+  ".project-card, .skill-card, .interest-card, .education-item, .featured-project, .contact-email, .logo-overlay-card"
+), {
+  max: 18,
   speed: 400,
   glare: true,
-  "max-glare": 0.2,
+  "max-glare": 0.18,
+  scale: 1.02,
+  speed: 500,
 });
 </script>
 
