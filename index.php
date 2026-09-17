@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Ajay · Full Stack Architect | Portfolio</title>
+<link rel="icon" type="image/png" href="assets/img/Logo.png">
+<link rel="apple-touch-icon" href="assets/img/Logo.png">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="bg-aurora"></div>
+<div class="particles" id="particlesContainer"></div>
+<div class="scroll-progress" id="scrollProgress"></div>
+<div class="logo-overlay" id="logoOverlay" aria-hidden="true">
+  <div class="logo-overlay-backdrop"></div>
+  <div class="logo-overlay-card">
+    <img src="assets/img/Logo.png" alt="Ajay Logo" class="logo-overlay-img">
+  </div>
+</div>
+
+<nav id="navbar">
+  <a href="#hero" class="logo" style="text-decoration: none;">
+    <img src="assets/img/Logo.png" alt="Ajay Logo" class="logo-img" id="logoImage" onerror="this.style.display='none'; document.querySelector('.logo-text').style.display='block'">
+    <span class="logo-text">✦ AJAY</span>
+  </a>
+  <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#interests">Interests</a></li>
+    <li><a href="#contact">Connect</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <div class="tag"><span class="pulse-dot"></span> AVAILABLE FOR COLLAB</div>
+    <div class="glitch-text">
+      <span class="glitch-primary">AJAY</span>
+    </div>
+    <div class="glitch-text" style="font-size:2rem; line-height:1.2;">Building digital <span style="color:var(--accent);">experiences</span></div>
+    <div class="hero-description">
+      <strong>Web Developer @ Webbing Pro Technologies</strong><br>
+      I turn ideas into resilient web applications, with pixel precision and backend logic. Currently mastering the entire dev cosmos — from databases to dynamic UIs.
+    </div>
+    <div class="btn-group">
+      <a href="#projects" class="btn-primary">✦ View My Work ✦</a>
+      <a href="#contact" class="btn-outline">📩 Drop a message</a>
+      <a href="assets/files/CV.pdf" download class="btn-resume-glow">
+    <span>📄 Download Resume</span>
+    
+  </a>
+    </div>
+  </div>
+
+
+<div class="hero-side-image">
+ <div class="text-cluster">
+
+  <!-- 🔥 GLOW BACKGROUND -->
+  <div class="cluster-glow"></div>
+
+  <div class="row top">
+    <span class="skill html">HTML</span>
+    <span class="skill css">CSS</span>
+  </div>
+
+  <div class="row middle">
+    <span class="skill python">Python</span>
+    <span class="main-title">Web Developer</span>
+    <span class="skill js">JavaScript</span>
+  </div>
+
+  <div class="row bottom">
+    <span class="skill sql">SQL</span>
+    <span class="skill php">PHP</span>
+  </div>
+
+</div>
+</div>
+
+
+</section>
+
+<!-- Infinite Scroll marquee -->
+<div style="overflow: hidden; white-space: nowrap; background: rgba(56, 189, 248, 0.08); border-block: 1px solid rgba(56, 189, 248, 0.25); padding: 0.8rem 0; position: relative; z-index: 5;">
+  <div id="techMarquee" style="display: inline-block; animation: marqueeScroll 25s linear infinite;"></div>
+  <div id="techMarquee2" style="display: inline-block; animation: marqueeScroll 25s linear infinite;"></div>
+</div>
+<style>
+  @keyframes marqueeScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }
+  #techMarquee, #techMarquee2 { white-space: nowrap; }
+</style>
+
+<section id="about">
+  <div class="skills-container">
+    <div class="section-label reveal">✦ whoami</div>
+    <div class="section-title reveal">Code. Create.<br><span style="color:var(--secondary);">Elevate.</span></div>
+    <div class="about-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2rem;">
+      <div class="reveal">
+        <p style="color: var(--text-muted); line-height: 1.75; font-size: 1rem;">I'm <strong style="color:var(--primary);">Ajay</strong>, a Web Developer at <strong>Webbing Pro Technologies</strong>. My playground: from designing responsive components to scripting server‑side logic. I treat every project as a masterpiece.</p>
+        <p style="margin-top: 1.2rem; color: var(--text-muted);">Driven by curiosity, I invest hours into building tools that matter. Chess sharpens my strategic mindset, and open source fuels my hunger to learn more every day.</p>
+      </div>
+      <div class="reveal" style="background: rgba(255, 255, 255, 0.7); border-radius: 28px; padding: 1.5rem; border:1px solid rgba(56, 189, 248, 0.3); box-shadow: 0 10px 25px rgba(14, 165, 233, 0.06);">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div><span style="color:var(--accent);">💼</span><br><span style="font-weight: bold;">Web Developer</span><br><span style="font-size:0.75rem;">Webbing Pro Technologies</span></div>
+          <div><span style="color:var(--accent);">📍</span><br><span style="font-weight: bold;">Hyderabad</span><br><span style="font-size:0.75rem;">Innovation Hub</span></div>
+          <div><span style="color:var(--accent);">⚡</span><br><span style="font-weight: bold;">Passion Driven</span><br><span style="font-size:0.75rem;">Self-learner</span></div>
+          <div><span style="color:var(--accent);">♟️</span><br><span style="font-weight: bold;">Chess & Logic</span><br><span style="font-size:0.75rem;">Strategic mindset</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="skills-container">
+    <div class="section-label reveal">✦ education</div>
+    <div class="section-title reveal">Academic <span style="color:var(--secondary);">Journey</span></div>
+    <div class="education-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;">
+      <div class="education-item reveal" style="background: var(--bg-card); backdrop-filter: blur(12px); border: 1px solid var(--border-light); border-radius: 28px; padding: 2rem; transition: all 0.4s;">
+        <div style="font-size: 2rem; margin-bottom: 1rem;">📚</div>
+        <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; background: linear-gradient(135deg, #0f172a, var(--primary)); -webkit-background-clip: text; background-clip: text; color: transparent;">10th Class</h3>
+        <p style="color: var(--text-muted); margin-bottom: 0.5rem;">SSB Municipal High School</p>
+        <p style="color: var(--accent); font-weight: 600;">Percentage: 77%</p>
+      </div>
+      <div class="education-item reveal" style="background: var(--bg-card); backdrop-filter: blur(12px); border: 1px solid var(--border-light); border-radius: 28px; padding: 2rem; transition: all 0.4s;">
+        <div style="font-size: 2rem; margin-bottom: 1rem;">🎓</div>
+        <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; background: linear-gradient(135deg, #0f172a, var(--primary)); -webkit-background-clip: text; background-clip: text; color: transparent;">Intermediate Education (MPC)</h3>
+        <p style="color: var(--text-muted); margin-bottom: 0.5rem;">APSWRJC (DR.B.R.Ambedkar Gurukul Boys, Ramakuppam)</p>
+        <p style="color: var(--accent); font-weight: 600;">Percentage: 83%</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PROJECTS SECTION ========== -->
+<section id="projects">
+  <div class="projects-container">
+
+    <div class="section-label reveal">✦ my creations</div>
+    <div class="section-title reveal">
+      Building <span style="color:var(--secondary);">Solutions</span><br>That Matter
+    </div>
+
+    <!-- 🔥 ADD PAWS PROJECT HERE -->
+<div class="featured-project paws-card reveal">
+
+  <!-- LEFT: IMAGE -->
+  <div class="paws-left">
+    <img 
+      src="https://i.postimg.cc/NjDChGWh/Whats-App-Image-2026-03-23-at-12-33-09.jpg" 
+      class="featured-img"
+    />
+  </div>
+
+  <!-- RIGHT: CONTENT -->
+  <div class="paws-right">
+    <h2>🐾 Paws Rescue Program</h2>
+
+    <p>
+      A platform where users can report injured animals and notify NGOs instantly for rescue.
+    </p>
+
+    <ul>
+      <li>✔ Real-world problem solving</li>
+      <li>✔ NGO notification system</li>
+      <li>✔ Responsive UI design</li>
+    </ul>
+
+    <div class="btn-group">
+      <a href="https://ajay-11012.github.io/Paws-Rescue-and-rehabilitation-Program/" target="_blank" class="btn-primary">🔗 Live Demo</a>
+      <a href="#" class="btn-outline">💻 View Code</a>
+    </div>
+  </div>
+
+</div>
+
+    <div class="project-filters reveal">
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="web">Web</button>
+  <button class="filter-btn" data-filter="tool">Tools</button>
+  <button class="filter-btn" data-filter="fun">Fun</button>
+</div>
+    <!-- EXISTING SMALL PROJECTS -->
+    <div class="projects-grid" id="projectsGrid"></div>
+
+  </div>
+</section>
+
+<section id="skills">
+  <div class="skills-container">
+    <div class="section-label reveal">⚙️ tech arsenal</div>
+    <div class="section-title reveal">Mastery in <span style="color:var(--secondary);">Modern Stack</span></div>
+    <div id="skillCategories" class="reveal"></div>
+  </div>
+</section>
+
+<section id="github">
+  <div class="skills-container">
+    <div class="section-label reveal">⚡ github insights</div>
+    <div class="section-title reveal">
+      My Coding <span style="color:var(--secondary);">Activity</span>
+    </div>
+
+<div class="github-stats-container">
+
+  <!-- Stats (fixed version) -->
+  <!-- <img 
+    src="https://github-readme-stats-git-masterrstaa-rickstaa.vercel.app/api?username=Ajay-11012&show_icons=true&theme=tokyonight"
+  /> -->
+
+  <!-- Streak (already working) -->
+  <img 
+    src="https://streak-stats.demolab.com?user=Ajay-11012&theme=sky" 
+  />
+
+</div>
+</div>
+  </div>
+</section>
+
+<section id="interests">
+  <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+    <div class="section-label reveal" style="justify-content: center;">✦ beyond keyboard</div>
+    <div class="section-title reveal">What inspires <span style="color: var(--accent);">me</span></div>
+  </div>
+  <div class="interest-grid" id="interestsGrid"></div>
+</section>
+
+<section id="contact">
+  <div class="contact-center">
+    <div class="section-label reveal" style="justify-content: center;">✉️ let's talk</div>
+    <div class="section-title reveal">Collaborate & <span style="color: var(--secondary);">create magic</span></div>
+    <p class="reveal" style="color: var(--text-muted); margin-bottom: 1.5rem;">Available for freelance, open source contributions, or just a tech chat.</p>
+    <a href="mailto:ajaythadi01@gmail.com" class="contact-email reveal"><span style="font-size: 1.5rem;">📧</span> ajaythadi01@gmail.com</a>
+    <div class="social-links reveal">
+      <a href="https://github.com/Ajay-11012" class="social-btn"><img src="https://cdn.simpleicons.org/github/0f172a" width="16"> GitHub</a>
+      <a href="https://www.linkedin.com/in/ajay-thadi/?isSelfProfile=false" class="social-btn"><img src="https://img.freepik.com/premium-vector/linkedin-logo-icon_1273375-1174.jpg?semt=ais_hybrid&w=740&q=80" target="_blank" width="16"> LinkedIn</a>
+      <!-- <a href="#" class="social-btn"><img src="https://cdn.simpleicons.org/x/white" width="16" style="filter: invert(1);"> X (Twitter)</a>
+      <a href="#" class="social-btn"><img src="https://cdn.simpleicons.org/instagram/e1306c" width="16"> Instagram</a> -->
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025 Ajay — Full Stack Visionary</span>
+  <span>∞ Built with • Reactivity • Stellar Animations</span>
+  <span>Web Developer @ Webbing Pro Technologies</span>
+</footer>
+
+<div class="global-cursor-glow"></div>
+
+<script src="assets/js/java.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+<script>
+VanillaTilt.init(document.querySelectorAll(
+  ".project-card, .skill-card, .interest-card, .education-item, .featured-project, .contact-email, .logo-overlay-card"
+), {
+  max: 18,
+  speed: 400,
+  glare: true,
+  "max-glare": 0.18,
+  scale: 1.02,
+  speed: 500,
+});
+</script>
+
+</body>
+</html>
