@@ -220,7 +220,9 @@ filterButtons.forEach(btn => {
     });
     navLinks.forEach(link => {
       link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
+      if (new URL(link.href, window.location.href).hash === `#${current}`) {
+        link.classList.add('active');
+      }
     });
     const nav = document.getElementById('navbar');
     if (window.scrollY > 50) nav.style.background = 'rgba(5,5,20,0.9)';
@@ -242,12 +244,17 @@ filterButtons.forEach(btn => {
     img.onerror = () => { img.src = 'https://cdn.simpleicons.org/code/white'; };
   });
   
-  // Smooth scroll for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  // Smooth scroll for links to sections on this page.
+  document.querySelectorAll('a[href*="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
+      const url = new URL(this.href, window.location.href);
+      const isCurrentPage = url.origin === window.location.origin &&
+        url.pathname === window.location.pathname;
+      const target = isCurrentPage && url.hash ? document.querySelector(url.hash) : null;
+
       if (target) {
+        e.preventDefault();
+        history.replaceState(null, '', url.hash);
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
